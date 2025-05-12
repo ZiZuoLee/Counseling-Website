@@ -95,7 +95,25 @@ const AdminDashboard = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+    <Container 
+      maxWidth={false} 
+      disableGutters 
+      sx={{ 
+        minHeight: '100vh', 
+        width: '100%',
+        background: 'linear-gradient(90deg, #A7FFEB 0%, #FFD6E0 100%)', 
+        py: 4,
+        px: { xs: 2, md: 4 },
+        overflow: 'auto',
+        boxSizing: 'border-box'
+      }}
+    >
+      <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+        <img src={require('../logo/Anahata White.png')} alt="Counseling Logo" style={{ width: 80, marginRight: 16, borderRadius: 8 }} />
+        <Typography variant="h5" sx={{ fontWeight: 700, color: 'primary.main', letterSpacing: 1 }}>
+          Admin Dashboard
+        </Typography>
+      </Box>
       <Grid container spacing={3}>
         {/* Overview Cards */}
         <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 4' } }}>

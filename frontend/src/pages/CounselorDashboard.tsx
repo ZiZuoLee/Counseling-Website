@@ -195,9 +195,22 @@ const CounselorDashboard = () => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      <AppBar position="static" color="default" elevation={1} sx={{ mb: 4 }}>
+    <Container 
+      maxWidth={false} 
+      disableGutters 
+      sx={{ 
+        minHeight: '100vh', 
+        width: '100%',
+        background: 'linear-gradient(90deg, #A7FFEB 0%, #FFD6E0 100%)', 
+        py: 4,
+        px: { xs: 2, md: 4 },
+        overflow: 'auto',
+        boxSizing: 'border-box'
+      }}
+    >
+      <AppBar position="static" color="default" elevation={1} sx={{ mb: 4, borderRadius: 3, background: 'linear-gradient(90deg, #1DE9B6 0%, #00B8D4 100%)', boxShadow: '0 4px 24px rgba(110,198,202,0.10)' }}>
         <Toolbar>
+          <img src={require('../logo/Anahata White.png')} alt="Counseling Logo" style={{ width: 80, marginRight: 16, borderRadius: 8 }} />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Counselor Dashboard
           </Typography>
@@ -205,6 +218,14 @@ const CounselorDashboard = () => {
             color="inherit"
             startIcon={<LogoutIcon />}
             onClick={handleLogout}
+            sx={{
+              textTransform: 'none',
+              borderRadius: 3,
+              fontWeight: 600,
+              '&:hover': {
+                backgroundColor: 'rgba(0, 0, 0, 0.04)'
+              }
+            }}
           >
             Logout
           </Button>
@@ -217,10 +238,10 @@ const CounselorDashboard = () => {
         </Alert>
       )}
       
-      <Grid container spacing={3}>
+      <Grid container spacing={3} justifyContent="center" alignItems="flex-start">
         {/* Welcome Section */}
-        <Grid sx={{ gridColumn: 'span 12' }}>
-          <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+        <Grid sx={{ gridColumn: 'span 12', display: 'flex', justifyContent: 'center' }}>
+          <Paper sx={{ width: '100%', maxWidth: 900, p: 2, display: 'flex', flexDirection: 'column' }}>
             <Typography variant="h4" gutterBottom>
               Welcome, {user?.name}
             </Typography>
@@ -231,55 +252,77 @@ const CounselorDashboard = () => {
         </Grid>
 
         {/* Quick Actions */}
-        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 4' } }}>
-          <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: 240 }}>
+        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 4' }, display: 'flex', justifyContent: 'center' }}>
+          <Paper sx={{ width: '100%', maxWidth: 400, p: 3, display: 'flex', flexDirection: 'column', height: 240, borderRadius: 3, boxShadow: '0 4px 24px rgba(110,198,202,0.10)' }}>
             <Typography variant="h6" gutterBottom>
               Quick Actions
             </Typography>
-            <List>
-              <ListItem component="button" onClick={handleChatClick}>
-                <ListItemIcon>
-                  <ChatIcon />
-                </ListItemIcon>
-                <ListItemText primary="Start Chat Session" />
+            <List sx={{ gap: 1 }}>
+              <ListItem component="button" onClick={handleChatClick} sx={{ borderRadius: 2, mb: 1, p: 0 }}>
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  startIcon={<ChatIcon />}
+                  sx={{
+                    borderRadius: 2,
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    boxShadow: '0 2px 8px rgba(110,198,202,0.10)',
+                    py: 1.5,
+                  }}
+                >
+                  Start Chat Session
+                </Button>
               </ListItem>
-              <ListItem component="button" onClick={handleHotlineClick}>
-                <ListItemIcon>
-                  <CallIcon />
-                </ListItemIcon>
-                <ListItemText primary="Emergency Hotline" />
+              <ListItem component="button" onClick={handleHotlineClick} sx={{ borderRadius: 2, p: 0 }}>
+                <Button
+                  fullWidth
+                  variant="outlined"
+                  color="primary"
+                  startIcon={<CallIcon />}
+                  sx={{
+                    borderRadius: 2,
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    py: 1.5,
+                    borderWidth: 2,
+                  }}
+                >
+                  Emergency Hotline
+                </Button>
               </ListItem>
             </List>
           </Paper>
         </Grid>
 
         {/* Stats Section */}
-        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 3' } }}>
-          <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: 140 }}>
+        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 3' }, display: 'flex', justifyContent: 'center' }}>
+          <Paper sx={{ width: '100%', maxWidth: 300, p: 2, display: 'flex', flexDirection: 'column', height: 140 }}>
             <Typography variant="h6" gutterBottom>
               Total Appointments
             </Typography>
             <Typography variant="h3">{stats.totalAppointments}</Typography>
           </Paper>
         </Grid>
-        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 3' } }}>
-          <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: 140 }}>
+        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 3' }, display: 'flex', justifyContent: 'center' }}>
+          <Paper sx={{ width: '100%', maxWidth: 300, p: 2, display: 'flex', flexDirection: 'column', height: 140 }}>
             <Typography variant="h6" gutterBottom>
               Pending
             </Typography>
             <Typography variant="h3">{stats.pendingAppointments}</Typography>
           </Paper>
         </Grid>
-        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 3' } }}>
-          <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: 140 }}>
+        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 3' }, display: 'flex', justifyContent: 'center' }}>
+          <Paper sx={{ width: '100%', maxWidth: 300, p: 2, display: 'flex', flexDirection: 'column', height: 140 }}>
             <Typography variant="h6" gutterBottom>
               Approved
             </Typography>
             <Typography variant="h3">{stats.approvedAppointments}</Typography>
           </Paper>
         </Grid>
-        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 3' } }}>
-          <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: 140 }}>
+        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 3' }, display: 'flex', justifyContent: 'center' }}>
+          <Paper sx={{ width: '100%', maxWidth: 300, p: 2, display: 'flex', flexDirection: 'column', height: 140 }}>
             <Typography variant="h6" gutterBottom>
               Rejected
             </Typography>
@@ -288,8 +331,8 @@ const CounselorDashboard = () => {
         </Grid>
 
         {/* Pending Appointments */}
-        <Grid sx={{ gridColumn: 'span 12' }}>
-          <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+        <Grid sx={{ gridColumn: 'span 12', display: 'flex', justifyContent: 'center' }}>
+          <Paper sx={{ width: '100%', maxWidth: 900, p: 2, display: 'flex', flexDirection: 'column' }}>
             <Typography variant="h6" gutterBottom>
               Pending Appointments
             </Typography>
@@ -344,8 +387,8 @@ const CounselorDashboard = () => {
         </Grid>
 
         {/* Upcoming Approved Appointments */}
-        <Grid sx={{ gridColumn: 'span 12' }}>
-          <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+        <Grid sx={{ gridColumn: 'span 12', display: 'flex', justifyContent: 'center' }}>
+          <Paper sx={{ width: '100%', maxWidth: 900, p: 2, display: 'flex', flexDirection: 'column' }}>
             <Typography variant="h6" gutterBottom>
               Upcoming Approved Appointments
             </Typography>
@@ -383,8 +426,8 @@ const CounselorDashboard = () => {
         </Grid>
 
         {/* Rejected Appointments */}
-        <Grid sx={{ gridColumn: 'span 12' }}>
-          <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+        <Grid sx={{ gridColumn: 'span 12', display: 'flex', justifyContent: 'center' }}>
+          <Paper sx={{ width: '100%', maxWidth: 900, p: 2, display: 'flex', flexDirection: 'column' }}>
             <Typography variant="h6" gutterBottom>
               Rejected Appointments
             </Typography>

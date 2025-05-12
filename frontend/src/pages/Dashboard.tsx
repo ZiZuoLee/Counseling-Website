@@ -178,26 +178,39 @@ const Dashboard = () => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+    <Container 
+      maxWidth={false} 
+      disableGutters 
+      sx={{ 
+        minHeight: '100vh', 
+        width: '100%',
+        background: 'linear-gradient(90deg, #A7FFEB 0%, #FFD6E0 100%)', 
+        py: 4,
+        px: { xs: 2, md: 4 },
+        overflow: 'auto',
+        boxSizing: 'border-box'
+      }}
+    >
       <AppBar 
         position="static" 
         color="default" 
         elevation={1} 
         sx={{ 
           mb: 4,
-          borderRadius: 2,
-          background: 'linear-gradient(to right, #ffffff, #f8f9fa)',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+          borderRadius: 3,
+          background: 'linear-gradient(90deg, #1DE9B6 0%, #00B8D4 100%)',
+          boxShadow: '0 4px 24px rgba(110,198,202,0.10)'
         }}
       >
         <Toolbar>
+          <img src={require('../logo/Anahata White.png')} alt="Counseling Logo" style={{ width: 80, marginRight: 16, borderRadius: 8 }} />
           <Typography 
             variant="h6" 
             component="div" 
             sx={{ 
               flexGrow: 1,
               color: '#2c3e50',
-              fontWeight: 600
+              fontWeight: 700
             }}
           >
             Welcome, {user?.name}
@@ -208,7 +221,8 @@ const Dashboard = () => {
             onClick={handleLogout}
             sx={{
               textTransform: 'none',
-              borderRadius: 2,
+              borderRadius: 3,
+              fontWeight: 600,
               '&:hover': {
                 backgroundColor: 'rgba(0, 0, 0, 0.04)'
               }
@@ -233,18 +247,20 @@ const Dashboard = () => {
         </Alert>
       )}
 
-      <Grid container spacing={3}>
+      <Grid container spacing={3} justifyContent="center" alignItems="flex-start">
         {/* Quick Actions */}
-        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 4' } }}>
+        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 4' }, display: 'flex', justifyContent: 'center' }}>
           <Paper 
             sx={{ 
+              width: '100%',
+              maxWidth: 400,
               p: 3, 
               display: 'flex', 
               flexDirection: 'column', 
               height: 240,
-              borderRadius: 2,
+              borderRadius: 3,
               background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 4px 24px rgba(110,198,202,0.10)'
             }}
           >
             <Typography 
@@ -271,7 +287,7 @@ const Dashboard = () => {
                 }}
               >
                 <ListItemIcon>
-                  <ChatIcon sx={{ color: '#2196f3' }} />
+                  <ChatIcon sx={{ color: 'primary.main' }} />
                 </ListItemIcon>
                 <ListItemText 
                   primary="Start Chat Session" 
@@ -291,7 +307,7 @@ const Dashboard = () => {
                 }}
               >
                 <ListItemIcon>
-                  <CallIcon sx={{ color: '#2196f3' }} />
+                  <CallIcon sx={{ color: 'primary.main' }} />
                 </ListItemIcon>
                 <ListItemText 
                   primary="Emergency Hotline" 
@@ -305,16 +321,18 @@ const Dashboard = () => {
         </Grid>
 
         {/* Pending Appointments */}
-        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 6' } }}>
+        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 6' }, display: 'flex', justifyContent: 'center' }}>
           <Paper 
             sx={{ 
+              width: '100%',
+              maxWidth: 600,
               p: 3, 
               display: 'flex', 
               flexDirection: 'column', 
               height: 240,
-              borderRadius: 2,
+              borderRadius: 3,
               background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 4px 24px rgba(110,198,202,0.10)'
             }}
           >
             <Typography 
@@ -350,7 +368,7 @@ const Dashboard = () => {
                     }}
                   >
                     <ListItemIcon>
-                      <EventIcon sx={{ color: '#2196f3' }} />
+                      <EventIcon sx={{ color: 'primary.main' }} />
                     </ListItemIcon>
                     <ListItemText
                       primary={appointment.reason}
@@ -379,15 +397,17 @@ const Dashboard = () => {
         </Grid>
 
         {/* Appointment History */}
-        <Grid sx={{ gridColumn: 'span 12' }}>
+        <Grid sx={{ gridColumn: 'span 12', display: 'flex', justifyContent: 'center' }}>
           <Paper 
             sx={{ 
+              width: '100%',
+              maxWidth: 900,
               p: 3, 
               display: 'flex', 
               flexDirection: 'column',
-              borderRadius: 2,
+              borderRadius: 3,
               background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 4px 24px rgba(110,198,202,0.10)'
             }}
           >
             <Typography 
@@ -425,9 +445,9 @@ const Dashboard = () => {
                   >
                     <ListItemIcon>
                       {appointment.status === 'approved' ? (
-                        <CheckCircleIcon sx={{ color: '#4caf50' }} />
+                        <CheckCircleIcon sx={{ color: 'primary.main' }} />
                       ) : (
-                        <CancelIcon sx={{ color: '#f44336' }} />
+                        <CancelIcon sx={{ color: 'error.main' }} />
                       )}
                     </ListItemIcon>
                     <ListItemText
@@ -457,15 +477,17 @@ const Dashboard = () => {
         </Grid>
 
         {/* Available Counselors */}
-        <Grid sx={{ gridColumn: 'span 12' }}>
+        <Grid sx={{ gridColumn: 'span 12', display: 'flex', justifyContent: 'center' }}>
           <Paper 
             sx={{ 
+              width: '100%',
+              maxWidth: 900,
               p: 3, 
               display: 'flex', 
               flexDirection: 'column',
-              borderRadius: 2,
+              borderRadius: 3,
               background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 4px 24px rgba(110,198,202,0.10)'
             }}
           >
             <Typography 
@@ -479,11 +501,13 @@ const Dashboard = () => {
             >
               Available Counselors
             </Typography>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} justifyContent="center">
               {counselors.map((counselor) => (
-                <Grid sx={{ gridColumn: { xs: 'span 12', sm: 'span 6', md: 'span 4' } }} key={counselor._id}>
+                <Grid sx={{ gridColumn: { xs: 'span 12', sm: 'span 6', md: 'span 4' }, display: 'flex', justifyContent: 'center' }} key={counselor._id}>
                   <Card 
                     sx={{ 
+                      width: '100%',
+                      maxWidth: 350,
                       borderRadius: 2,
                       boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
                       '&:hover': {

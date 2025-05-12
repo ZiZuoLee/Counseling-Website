@@ -119,7 +119,19 @@ const Hotline = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+    <Container 
+      maxWidth={false} 
+      disableGutters 
+      sx={{ 
+        minHeight: '100vh', 
+        width: '100%',
+        background: 'linear-gradient(90deg, #A7FFEB 0%, #FFD6E0 100%)', 
+        py: 4,
+        px: { xs: 2, md: 4 },
+        overflow: 'auto',
+        boxSizing: 'border-box'
+      }}
+    >
       <AppBar 
         position="static" 
         color="default" 
@@ -127,11 +139,12 @@ const Hotline = () => {
         sx={{ 
           mb: 4,
           borderRadius: 2,
-          background: 'linear-gradient(to right, #ffffff, #f8f9fa)',
+          background: 'linear-gradient(90deg, #1DE9B6 0%, #00B8D4 100%)',
           boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
         }}
       >
         <Toolbar>
+          <img src={require('../logo/Anahata White.png')} alt="Counseling Logo" style={{ width: 80, marginRight: 16, borderRadius: 8 }} />
           <Typography 
             variant="h6" 
             component="div" 
@@ -190,15 +203,17 @@ const Hotline = () => {
         If this is a life-threatening emergency, please call 120 immediately.
       </Alert>
 
-      <Grid container spacing={3}>
+      <Grid container spacing={3} justifyContent="center" alignItems="flex-start">
         {/* Emergency Contacts */}
-        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 8' } }}>
+        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 8' }, display: 'flex', justifyContent: 'center' }}>
           <Paper 
             sx={{ 
+              width: '100%',
+              maxWidth: 800,
               p: 3,
-              borderRadius: 2,
+              borderRadius: 3,
               background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 4px 24px rgba(110,198,202,0.10)'
             }}
           >
             <Typography 
@@ -220,9 +235,9 @@ const Hotline = () => {
                       height: '100%',
                       minHeight: '280px',
                       borderRadius: 3,
-                      boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+                      background: 'rgba(255,255,255,0.95)',
+                      boxShadow: '0 4px 24px rgba(110,198,202,0.10)',
                       transition: 'all 0.3s ease',
-                      background: `linear-gradient(135deg, ${contact.color}08 0%, ${contact.color}15 100%)`,
                       '&:hover': {
                         transform: 'translateY(-5px)',
                         boxShadow: '0 8px 30px rgba(0,0,0,0.15)',
@@ -332,13 +347,15 @@ const Hotline = () => {
         </Grid>
 
         {/* Quick Resources */}
-        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 4' } }}>
+        <Grid sx={{ gridColumn: { xs: 'span 12', md: 'span 4' }, display: 'flex', justifyContent: 'center' }}>
           <Paper 
             sx={{ 
+              width: '100%',
+              maxWidth: 400,
               p: 3,
-              borderRadius: 2,
+              borderRadius: 3,
               background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 4px 24px rgba(110,198,202,0.10)'
             }}
           >
             <Typography 

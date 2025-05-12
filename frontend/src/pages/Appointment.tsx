@@ -25,6 +25,8 @@ import {
   Alert,
   CircularProgress,
   Chip,
+  AppBar,
+  Toolbar,
 } from '@mui/material';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { appointmentAPI, userAPI } from '../services/api';
@@ -205,7 +207,60 @@ const Appointment = () => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+    <Container 
+      maxWidth={false} 
+      disableGutters 
+      sx={{ 
+        minHeight: '100vh', 
+        width: '100%',
+        background: 'linear-gradient(90deg, #A7FFEB 0%, #FFD6E0 100%)', 
+        py: 4,
+        px: { xs: 2, md: 4 },
+        overflow: 'auto',
+        boxSizing: 'border-box'
+      }}
+    >
+      <AppBar 
+        position="static" 
+        color="default" 
+        elevation={1} 
+        sx={{ 
+          mb: 4,
+          borderRadius: 2,
+          background: 'linear-gradient(90deg, #1DE9B6 0%, #00B8D4 100%)',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+        }}
+      >
+        <Toolbar>
+          <img src={require('../logo/Anahata White.png')} alt="Counseling Logo" style={{ width: 80, marginRight: 16, borderRadius: 8 }} />
+          <Typography 
+            variant="h6" 
+            component="div" 
+            sx={{ 
+              flexGrow: 1,
+              color: '#2c3e50',
+              fontWeight: 600
+            }}
+          >
+            {user?.role === 'user' ? 'Book an Appointment' : 'Manage Appointments'}
+          </Typography>
+          <Button
+            color="inherit"
+            startIcon={<ArrowBackIcon />}
+            onClick={() => navigate('/dashboard')}
+            sx={{
+              textTransform: 'none',
+              borderRadius: 2,
+              '&:hover': {
+                backgroundColor: 'rgba(0, 0, 0, 0.04)'
+              }
+            }}
+          >
+            Back to Dashboard
+          </Button>
+        </Toolbar>
+      </AppBar>
+      
       {error && (
         <Alert severity="error" sx={{ mb: 2 }} onClose={() => setError(null)}>
           {error}
@@ -537,34 +592,6 @@ const Appointment = () => {
           {snackbar.message}
         </Alert>
       </Snackbar>
-
-      {/* Back to Dashboard Button */}
-      <Box sx={{ 
-        mt: 4, 
-        display: 'flex', 
-        justifyContent: 'center' 
-      }}>
-        <Button
-          variant="outlined"
-          startIcon={<ArrowBackIcon />}
-          onClick={() => navigate('/dashboard')}
-          size="large"
-          sx={{
-            textTransform: 'none',
-            borderRadius: 2,
-            px: 4,
-            py: 1.5,
-            borderColor: '#2196f3',
-            color: '#2196f3',
-            '&:hover': {
-              borderColor: '#1976D2',
-              backgroundColor: 'rgba(33, 150, 243, 0.04)',
-            },
-          }}
-        >
-          Back to Dashboard
-        </Button>
-      </Box>
     </Container>
   );
 };

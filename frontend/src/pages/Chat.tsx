@@ -183,7 +183,19 @@ const Chat = () => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+    <Container 
+      maxWidth={false} 
+      disableGutters 
+      sx={{ 
+        minHeight: '100vh', 
+        width: '100%',
+        background: 'linear-gradient(90deg, #A7FFEB 0%, #FFD6E0 100%)', 
+        py: 4,
+        px: { xs: 2, md: 4 },
+        overflow: 'auto',
+        boxSizing: 'border-box'
+      }}
+    >
       <AppBar 
         position="static" 
         color="default" 
@@ -191,11 +203,12 @@ const Chat = () => {
         sx={{ 
           mb: 4,
           borderRadius: 2,
-          background: 'linear-gradient(to right, #ffffff, #f8f9fa)',
+          background: 'linear-gradient(90deg, #1DE9B6 0%, #00B8D4 100%)',
           boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
         }}
       >
         <Toolbar>
+          <img src={require('../logo/Anahata White.png')} alt="Counseling Logo" style={{ width: 80, marginRight: 16, borderRadius: 8 }} />
           <Typography 
             variant="h6" 
             component="div" 
@@ -238,7 +251,7 @@ const Chat = () => {
         </Alert>
       )}
 
-      <Grid container spacing={3}>
+      <Grid container spacing={3} justifyContent="center" alignItems="flex-start">
         {/* User List for Counselors and Regular Users */}
         {!selectedUser && (
           <Grid sx={{ gridColumn: 'span 12' }}>

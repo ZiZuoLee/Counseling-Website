@@ -66,19 +66,18 @@ const Login = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Box
-        sx={{
-          marginTop: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <Paper elevation={3} sx={{ p: 4, width: '100%' }}>
-          <Typography component="h1" variant="h5" align="center" gutterBottom>
-            Login
-          </Typography>
+    <Box sx={{ minHeight: '100vh', background: 'linear-gradient(90deg, #A7FFEB 0%, #FFD6E0 100%)', py: 8 }}>
+      <Container component="main" maxWidth="xs">
+        <Paper elevation={4} sx={{ p: 5, borderRadius: 4, boxShadow: '0 8px 32px rgba(110,198,202,0.10)', background: 'rgba(255,255,255,0.95)' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 2 }}>
+            <img src={require('../logo/Anahata Logo.png')} alt="Counseling Logo" style={{ width: 120, marginBottom: 20 }} />
+            <Typography component="h1" variant="h4" align="center" gutterBottom sx={{ fontWeight: 700, color: 'primary.main', letterSpacing: 1 }}>
+              Welcome Back
+            </Typography>
+            <Typography variant="body1" align="center" sx={{ color: 'text.secondary', mb: 2 }}>
+              Log in to continue your journey to well-being.
+            </Typography>
+          </Box>
           {(error || authError) && (
             <Alert severity="error" sx={{ mb: 2 }}>
               {error || authError}
@@ -141,8 +140,8 @@ const Login = () => {
             </Button>
           </form>
         </Paper>
-      </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 };
 
